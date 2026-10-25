@@ -20,9 +20,10 @@ export function SiteHeader() {
           {SITE.name}
         </Link>
 
+        {/* Changed md:flex to lg:flex */}
         <nav
           aria-label="Primary"
-          className="hidden md:flex md:items-center md:gap-6"
+          className="hidden lg:flex lg:items-center lg:gap-6"
         >
           {PRIMARY_NAV.map((item) => (
             <NavLink
@@ -43,19 +44,22 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:block">
+          {/* Changed md:block to lg:block */}
+          <div className="hidden lg:block">
             <ThemeToggle />
           </div>
+          {/* Changed md:inline-block to lg:inline-block */}
           <Link
             to="/contact"
-            className="hidden rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring md:inline-block"
+            className="hidden rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:inline-block"
           >
             Start a Project
           </Link>
+          {/* Changed md:hidden to lg:hidden */}
           <button
             ref={triggerRef}
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring lg:hidden"
             aria-label="Open menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav-sheet"

@@ -67,18 +67,20 @@ export function MobileNavSheet({
 
   return (
     <>
+      {/* Changed md:hidden to lg:hidden */}
       <div
-        className="fixed inset-0 z-40 bg-black/40 motion-safe:transition-opacity motion-safe:duration-200 md:hidden"
+        className="fixed inset-0 z-40 bg-black/40 motion-safe:transition-opacity motion-safe:duration-200 lg:hidden"
         onClick={onClose}
         aria-hidden="true"
       />
+      {/* Changed md:hidden to lg:hidden */}
       <div
         ref={sheetRef}
         id="mobile-nav-sheet"
         role="dialog"
         aria-modal="true"
         aria-label="Site navigation"
-        className="fixed inset-y-0 left-0 z-50 flex w-[80vw] max-w-sm flex-col bg-background text-foreground shadow-xl motion-safe:animate-[egl-slide-in_0.25s_ease-out] md:hidden"
+        className="fixed inset-y-0 left-0 z-50 flex w-[80vw] max-w-sm flex-col bg-background text-foreground shadow-xl motion-safe:animate-[egl-slide-in_0.25s_ease-out] lg:hidden"
       >
         <div className="flex items-center justify-between border-b border-border px-4 py-4">
           <Link
