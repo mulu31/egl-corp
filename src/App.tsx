@@ -5,6 +5,7 @@ import { PlaceholderPage } from "./pages/PlaceholderPage";
 import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { ProductDetailPage } from "./pages/ProductDetailPage";
 import { ProjectDetailPage } from "./pages/ProjectDetailPage";
+import { BlogDetailPage } from "./pages/BlogDetailPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
 export function App() {
@@ -51,6 +52,19 @@ export function App() {
           }
         />
         <Route path="projects/:slug" element={<ProjectDetailPage />} />
+
+        <Route
+          path="blogs"
+          element={
+            <PlaceholderPage
+              title="Blogs & Events"
+              description="Articles and event updates from EGL Corp will be published here."
+              path="/blogs"
+              eyebrow="Insights"
+            />
+          }
+        />
+        <Route path="blogs/:slug" element={<BlogDetailPage />} />
 
         <Route
           path="about"

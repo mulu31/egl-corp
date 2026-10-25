@@ -4,14 +4,14 @@ export interface NavItem {
 }
 
 export const PRIMARY_NAV: readonly NavItem[] = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
   { label: "Services", to: "/services" },
-  { label: "Products", to: "/products" },
-  { label: "Projects", to: "/projects" },
-  { label: "About", to: "/about" },
+  { label: "Blogs & Events", to: "/blogs" },
+  { label: "Contact", to: "/contact" },
 ] as const;
 
 export const FOOTER_NAV: readonly NavItem[] = [
   ...PRIMARY_NAV,
-  { label: "Contact", to: "/contact" },
   { label: "Privacy Policy", to: "/privacy" },
 ] as const;

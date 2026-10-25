@@ -1,6 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   EGL Corp — brand & theme tokens
+   Merge existing custom tokens if your file already declares them.
+   ============================================================ */
+
+:root {
+  --brand-navy: #101820;
+  --brand-blue: #2563eb;
+  --brand-teal: #14b8a6;
+  --brand-orange: #f97316;
+  --brand-slate: #64748b;
+  --brand-white: #ffffff;
+
+  /* Light theme */
+  --background: var(--brand-white);
+  --foreground: var(--brand-navy);
+  --card: var(--brand-white);
+  --card-foreground: var(--brand-navy);
+  --muted: #f1f5f9;
+  --muted-foreground: var(--brand-slate);
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: var(--brand-blue);
+  --primary: var(--brand-blue);
+  --primary-foreground: var(--brand-white);
+  --accent: var(--brand-teal);
+  --accent-foreground: var(--brand-white);
+}
+
+.dark {
+  --background: #0b1220;
+  --foreground: #e2e8f0;
+  --card: #101820;
+  --card-foreground: #e2e8f0;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #60a5fa;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --accent: #2dd4bf;
+  --accent-foreground: #0b1220;
+}
+
 @theme {
   --font-sans: "Inter", sans-serif;
   --font-display: "Playfair Display", serif;
@@ -12,16 +59,29 @@
   --color-brand-slate: #64748b;
 }
 
-html {
-  scroll-behavior: smooth;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
 }
 
-body {
-  min-width: 320px;
-  margin: 0;
-  font-family: var(--font-sans);
-  color: var(--color-brand-navy);
-  background: #fff;
+html {
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -31,18 +91,40 @@ h4 {
   font-family: var(--font-display);
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-brand-blue);
-  outline-offset: 3px;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@keyframes egl-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
