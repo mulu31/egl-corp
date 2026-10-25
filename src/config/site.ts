@@ -1,6 +1,5 @@
 /**
  * Central site configuration.
- *
  * IMPORTANT: `baseUrl` is a placeholder. Replace with the real production
  * domain before launch. All canonical and Open Graph URLs derive from this.
  */
@@ -10,6 +9,15 @@ export const SITE = {
   description:
     "EGL Corp engineers digital solutions and software products that help businesses solve problems, work smarter, and grow.",
   baseUrl: "https://REPLACE-BEFORE-LAUNCH.example",
+  heroVideo: {
+    // Dummy YouTube IDs for development.
+    // Mobile: Short loop (e.g., mobile tech)
+    mobile: "b7r2WjB2X3E",
+    // Tablet: Medium loop (e.g., coding)
+    tablet: "P3l0K0n2c0M",
+    // Desktop: Cinematic tech loop
+    desktop: "5qap5aO4i9A",
+  },
 } as const;
 
 /** Join a route path with the configured base URL. */
