@@ -67,13 +67,11 @@ export function MobileNavSheet({
 
   return (
     <>
-      {/* Changed md:hidden to lg:hidden */}
       <div
         className="fixed inset-0 z-40 bg-black/40 motion-safe:transition-opacity motion-safe:duration-200 lg:hidden"
         onClick={onClose}
         aria-hidden="true"
       />
-      {/* Changed md:hidden to lg:hidden */}
       <div
         ref={sheetRef}
         id="mobile-nav-sheet"
@@ -105,32 +103,36 @@ export function MobileNavSheet({
 
         <nav
           aria-label="Mobile primary"
-          className="flex-1 overflow-y-auto px-2 py-4"
+          className="flex-1 overflow-y-auto px-4 py-6"
         >
-          <ul className="space-y-1">
-            {PRIMARY_NAV.map((item, i) => (
-              <li key={item.to}>
-                <NavLink
-                  ref={i === 0 ? firstLinkRef : undefined}
-                  to={item.to}
-                  end={item.to === "/"}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `block rounded-md px-3 py-3 text-base font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
-                      isActive
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground hover:bg-muted"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
+          <ul className="flex flex-col items-center gap-2">
+            {PRIMARY_NAV.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.to} className="w-full">
+                  <NavLink
+                    ref={i === 0 ? firstLinkRef : undefined}
+                    to={item.to}
+                    end={item.to === "/"}
+                    onClick={onClose}
+                    className={({ isActive }) =>
+                      `flex items-center justify-center gap-3 rounded-md px-4 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+                        isActive
+                          ? "bg-primary/10 text-primary"
+                          : "text-foreground hover:bg-muted"
+                      }`
+                    }
+                  >
+                    {Icon && <Icon aria-hidden="true" size={18} />}
+                    <span>{item.label}</span>
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
-        <div className="border-t border-border px-4 py-4 text-xs text-muted-foreground">
+        <div className="border-t border-border px-4 py-4 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} {SITE.name}. All rights reserved.
         </div>
       </div>
