@@ -1,35 +1,60 @@
+import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { FAQS } from "../../data/faqs";
-import { PageContainer } from "../PageContainer";
+import { FAQS } from "@/data/homeData";
+import { PageContainer } from "@/components/PageContainer";
 
 export function FaqSection() {
-  return (
-    <section className="py-20 sm:py-24">
-      <PageContainer>
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-center font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Common questions
-          </h2>
-          <p className="mt-3 text-center text-muted-foreground">
-            How we work and what you can expect when starting a project.
-          </p>
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-          <div className="mt-12 divide-y divide-border rounded-lg border border-border bg-background">
-            {FAQS.map((faq) => (
-              <details key={faq.question} className="group">
-                <summary className="flex cursor-pointer items-center justify-between p-6 text-left font-medium text-foreground hover:bg-muted/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
-                  <span>{faq.question}</span>
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="py-24 bg-slate-950 text-white">
+      <PageContainer>
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-sm font-medium uppercase tracking-wider text-[#d4a373] mb-4 border-t border-[#d4a373] inline-block pt-2">
+            FAQ
+          </p>
+          <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
+            Common Questions
+          </h2>
+          <p className="text-slate-400">
+            Find answers to frequently asked questions.
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto border-t border-slate-800">
+          {FAQS.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={i} className="border-b border-slate-800">
+                <button
+                  onClick={() => toggle(i)}
+                  className="focus-ring-orange flex w-full items-center justify-between py-6 text-left group"
+                >
+                  <span
+                    className={`font-serif text-lg md:text-xl transition-colors ${isOpen ? "text-[#d4a373]" : "text-slate-200 group-hover:text-white"}`}
+                  >
+                    {faq.q}
+                  </span>
                   <FiChevronDown
-                    className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-                    aria-hidden="true"
+                    className={`h-5 w-5 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#d4a373]" : "text-slate-400"}`}
                   />
-                </summary>
-                <div className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">
-                  {faq.answer}
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isOpen ? "max-h-96 opacity-100 pb-6" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-slate-400 leading-relaxed max-w-2xl">
+                    {faq.a}
+                  </p>
                 </div>
-              </details>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </PageContainer>
     </section>

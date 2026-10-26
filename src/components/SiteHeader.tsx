@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import { Link, NavLink } from "react-router";
 import { FiMenu } from "react-icons/fi";
+import { Link, NavLink } from "react-router";
 import { PRIMARY_NAV } from "../lib/navigation";
-import { SITE } from "../config/site";
-import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 import { MobileNavSheet } from "./MobileNavSheet";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ export function SiteHeader() {
           to="/"
           className="font-serif text-lg font-semibold tracking-tight text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          {SITE.name}
+          <Logo variant="full" />
         </Link>
 
         {/* Changed md:flex to lg:flex */}
@@ -44,10 +44,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {/* Changed md:block to lg:block */}
-          <div className="hidden lg:block">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
           {/* Changed md:inline-block to lg:inline-block */}
           <Link
             to="/contact"

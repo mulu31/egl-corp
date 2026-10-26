@@ -1,58 +1,122 @@
-import { PageContainer } from "../PageContainer";
-import { SectionSeparator } from "../SectionSeparator";
+import { useState } from "react";
+import { Link } from "react-router";
+import { FiChevronLeft, FiChevronRight, FiArrowRight } from "react-icons/fi";
+import { WHY_US } from "@/data/homeData";
+import { PageContainer } from "@/components/PageContainer";
 
 export function WhyChooseUs() {
-  return (
-    <section className="py-20 sm:py-24">
-      <PageContainer>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Engineering clarity in complex problems.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Software should solve operational friction, not create it. We
-              approach every project by deeply understanding your workflows and
-              constraints before writing a single line of code.
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Our focus is on building software that your team can actually use,
-              maintain, and grow with over time.
-            </p>
-          </div>
+  const [active, setActive] = useState(0);
+  const next = () => setActive((prev) => (prev + 1) % WHY_US.length);
+  const prev = () =>
+    setActive((prev) => (prev === 0 ? WHY_US.length - 1 : prev - 1));
+  const item = WHY_US[active];
 
-          <div className="space-y-6">
-            {[
-              {
-                title: "Practical, business-oriented development",
-                text: "We align technical decisions with your actual business goals, not just trends.",
-              },
-              {
-                title: "Responsive communication",
-                text: "Clear updates, direct collaboration, and no vague promises.",
-              },
-              {
-                title: "Quality assurance built-in",
-                text: "Testing and stability are integrated into the process, not bolted on at the end.",
-              },
-              {
-                title: "Support and ongoing improvement",
-                text: "We remain available to iterate, maintain, and scale the systems we build.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold">
-                  {i + 1}
-                </div>
-                <div>
-                  <h3 className="font-medium text-foreground">{item.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
+  return (
+    <section className="py-24 bg-slate-950 text-white overflow-hidden">
+      <PageContainer>
+        <div className="mb-12">
+          <p className="text-sm font-medium uppercase tracking-wider text-orange-500 mb-2">
+            Why Choose Us
+          </p>
+          <h2 className="font-serif text-4xl font-semibold">
+            Engineering Excellence
+          </h2>
+        </div>
+
+        {/* Desktop Layout (Overlapping Card) */}
+        <div className="relative hidden md:block aspect-[21/9] w-full max-w-6xl mx-auto">
+          {/* Background Image Layer */}
+          <div className="absolute inset-y-0 right-0 w-[80%] overflow-hidden">
+            {WHY_US.map((w, i) => (
+              <img
+                key={w.title}
+                src={w.image}
+                alt={w.title}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
             ))}
           </div>
+
+          {/* Overlapping Card Layer */}
+          <div className="absolute inset-y-0 left-0 w-full max-w-md flex items-center z-10">
+            <div className="bg-[#1e293b] p-10 shadow-2xl w-full border border-slate-700/50">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-orange-500 font-medium text-sm">
+                  0{active + 1} / 0{WHY_US.length}
+                </span>
+                <span className="text-xs border border-slate-600 px-2 py-0.5 rounded-full text-slate-300">
+                  feature
+                </span>
+              </div>
+              <h3 className="font-serif text-3xl font-semibold mb-4 text-white">
+                {item.title}
+              </h3>
+              <p className="text-slate-300 mb-8 leading-relaxed line-clamp-4">
+                {item.desc}
+              </p>
+              <Link
+                to="/about"
+                className="focus-ring-orange inline-flex items-center text-sm font-medium text-white hover:text-orange-400"
+              >
+                Learn More <FiArrowRight className="ml-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout (Stacked) */}
+        <div className="md:hidden mt-8">
+          <div className="relative aspect-[4/3] w-full overflow-hidden mb-6">
+            {WHY_US.map((w, i) => (
+              <img
+                key={w.title}
+                src={w.image}
+                alt={w.title}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="bg-slate-900 p-6 border border-slate-800">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-orange-500 font-medium text-sm">
+                0{active + 1} / 0{WHY_US.length}
+              </span>
+            </div>
+            <h3 className="font-serif text-2xl font-semibold mb-3 text-white">
+              {item.title}
+            </h3>
+            <p className="text-slate-300 mb-6 text-sm leading-relaxed">
+              {item.desc}
+            </p>
+            <Link
+              to="/about"
+              className="focus-ring-orange inline-flex items-center text-sm font-medium text-white"
+            >
+              Learn More <FiArrowRight className="ml-2" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Pagination Controls */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <button
+            onClick={prev}
+            className="focus-ring-orange flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-white hover:bg-slate-800"
+            aria-label="Previous"
+          >
+            <FiChevronLeft size={20} />
+          </button>
+          <button
+            onClick={next}
+            className="focus-ring-orange flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 text-white hover:bg-slate-800"
+            aria-label="Next"
+          >
+            <FiChevronRight size={20} />
+          </button>
         </div>
       </PageContainer>
     </section>

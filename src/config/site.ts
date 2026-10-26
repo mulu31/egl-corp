@@ -12,11 +12,11 @@ export const SITE = {
   heroVideo: {
     // Dummy YouTube IDs for development.
     // Mobile: Short loop (e.g., mobile tech)
-    mobile: "b7r2WjB2X3E",
+    mobile: "iMAfIRaLl3k",
     // Tablet: Medium loop (e.g., coding)
-    tablet: "P3l0K0n2c0M",
+    tablet: "iYHrMtCTUsM",
     // Desktop: Cinematic tech loop
-    desktop: "5qap5aO4i9A",
+    desktop: "LwrAm6DkU1s",
   },
 } as const;
 

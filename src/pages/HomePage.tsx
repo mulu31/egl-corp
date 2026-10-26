@@ -1,13 +1,15 @@
-import { Seo } from "../components/Seo";
-import { Hero } from "../components/home/Hero";
-import { StatsBand } from "../components/home/StatsBand";
-import { WhyChooseUs } from "../components/home/WhyChooseUs";
-import { ServicesOverview } from "../components/home/ServicesOverview";
-import { FeaturedProjects } from "../components/home/FeaturedProjects";
-import { TechStack } from "../components/home/TechStack";
-import { FaqSection } from "../components/home/FaqSection";
-import { LatestNews } from "../components/home/LatestNews";
-import { FinalCta } from "../components/home/FinalCta";
+import { Seo } from "@/components/Seo";
+import { AboutSection } from "@/components/home/AboutSection";
+import { BlogHighlights } from "@/components/home/BlogHighlights";
+import { FaqSection } from "@/components/home/FaqSection";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { FinalCta } from "@/components/home/FinalCta";
+import { Hero } from "@/components/home/Hero";
+import { ServicesShowcase } from "@/components/home/ServicesShowcase";
+import { StatsCarousel } from "@/components/home/StatsCarousel";
+import { TechOrbit } from "@/components/home/TechOrbit";
+import { Testimonials } from "@/components/home/Testimonials";
+import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 
 export function HomePage() {
   return (
@@ -18,14 +20,15 @@ export function HomePage() {
         path="/"
       />
       <Hero />
-      <StatsBand />
+      <AboutSection />
+      <StatsCarousel />
+      <ServicesShowcase />
       <WhyChooseUs />
-      <ServicesOverview />
+      <TechOrbit />
       <FeaturedProjects />
-      <TechStack />
-      {/* Testimonials omitted (no verified data) */}
+      <BlogHighlights />
+      <Testimonials />
       <FaqSection />
-      <LatestNews />
       <FinalCta />
     </>
   );

@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router";
 import { SITE } from "../config/site";
 import { PRIMARY_NAV } from "../lib/navigation";
+import { Logo } from "./Logo";
 
 const SOCIAL_LINKS = [
   { icon: FiTwitter, href: "#", label: "X (Twitter)" },
@@ -34,7 +35,7 @@ export function SiteFooter() {
               Contact Details
             </h3>
             <p className="mb-4 text-sm font-medium text-foreground">
-              {SITE.name}
+              <Logo variant="full" asLink={false} />
             </p>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center justify-center gap-3 lg:justify-start">
@@ -61,12 +62,7 @@ export function SiteFooter() {
           {/* Center Logo & Socials */}
           <div className="flex flex-col items-center gap-6">
             <div className="rounded-sm bg-white p-3 shadow-sm dark:bg-slate-900 dark:border dark:border-border">
-              <span className="font-serif text-2xl font-bold tracking-tighter text-slate-900 dark:text-white">
-                {SITE.name.split(" ")[0].toUpperCase()}
-                <span className="mt-1 block text-center font-sans text-xs font-normal tracking-normal text-slate-600 dark:text-slate-400">
-                  {SITE.tagline}
-                </span>
-              </span>
+              <Logo variant="full" asLink={false} />
             </div>
 
             <div className="flex items-center gap-3">
@@ -94,7 +90,7 @@ export function SiteFooter() {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="hover:text-foreground transition-colors text-end block w-full border-b border-transparent hover:border-muted-foreground"
+                      className="hover:text-foreground transition-colors text-center sm:text-end block w-full border-b border-transparent hover:border-muted-foreground"
                     >
                       {item.label}
                     </Link>
