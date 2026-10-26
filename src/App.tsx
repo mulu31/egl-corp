@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router";
-import { SiteLayout } from "./components/SiteLayout";
-import { HomePage } from "./pages/HomePage";
-import { PlaceholderPage } from "./pages/PlaceholderPage";
-import { ServiceDetailPage } from "./pages/ServiceDetailPage";
-import { ProductDetailPage } from "./pages/ProductDetailPage";
-import { ProjectDetailPage } from "./pages/ProjectDetailPage";
-import { BlogDetailPage } from "./pages/BlogDetailPage";
-import { NotFoundPage } from "./pages/NotFoundPage";
+import { SiteLayout } from "@/components/SiteLayout";
+import { HomePage } from "@/pages/HomePage";
+import { AboutPage } from "@/pages/AboutPage";
+import { PlaceholderPage } from "@/pages/PlaceholderPage";
+import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
+import { ProductDetailPage } from "@/pages/ProductDetailPage";
+import { ProjectDetailPage } from "@/pages/ProjectDetailPage";
+import { BlogDetailPage } from "@/pages/BlogDetailPage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 
 export function App() {
   return (
@@ -66,17 +67,8 @@ export function App() {
         />
         <Route path="blogs/:slug" element={<BlogDetailPage />} />
 
-        <Route
-          path="about"
-          element={
-            <PlaceholderPage
-              title="About EGL Corp"
-              description="Engineering ideas and empowering progress through software."
-              path="/about"
-              eyebrow="Company"
-            />
-          }
-        />
+        {/* Updated About Route */}
+        <Route path="about" element={<AboutPage />} />
 
         <Route
           path="contact"
