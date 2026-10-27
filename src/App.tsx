@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
+import { ServicesPage } from "@/pages/ServicesPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
@@ -15,17 +16,9 @@ export function App() {
       <Route element={<SiteLayout />}>
         <Route index element={<HomePage />} />
 
-        <Route
-          path="services"
-          element={
-            <PlaceholderPage
-              title="Services"
-              description="Software engineering services tailored to business needs."
-              path="/services"
-              eyebrow="What we do"
-            />
-          }
-        />
+        {/* Updated Services Route */}
+        <Route path="services" element={<ServicesPage />} />
+
         <Route path="services/:slug" element={<ServiceDetailPage />} />
 
         <Route
@@ -67,7 +60,6 @@ export function App() {
         />
         <Route path="blogs/:slug" element={<BlogDetailPage />} />
 
-        {/* Updated About Route */}
         <Route path="about" element={<AboutPage />} />
 
         <Route

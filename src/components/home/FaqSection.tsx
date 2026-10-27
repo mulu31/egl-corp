@@ -1,9 +1,24 @@
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { FAQS } from "@/data/homeData";
+import { FAQS as DEFAULT_FAQS } from "@/data/homeData";
 import { PageContainer } from "@/components/PageContainer";
 
-export function FaqSection() {
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+export interface FaqSectionProps {
+  faqs?: readonly FaqItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+export function FaqSection({
+  faqs = DEFAULT_FAQS,
+  title = "Common Questions",
+  subtitle = "Find answers to frequently asked questions.",
+}: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
@@ -18,15 +33,13 @@ export function FaqSection() {
             FAQ
           </p>
           <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
-            Common Questions
+            {title}
           </h2>
-          <p className="text-slate-400">
-            Find answers to frequently asked questions.
-          </p>
+          <p className="text-slate-400">{subtitle}</p>
         </div>
 
         <div className="max-w-3xl mx-auto border-t border-slate-800">
-          {FAQS.map((faq, i) => {
+          {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
               <div key={i} className="border-b border-slate-800">

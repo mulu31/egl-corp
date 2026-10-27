@@ -34,7 +34,7 @@ export function SiteFooter() {
             <h3 className="mb-6 inline-block border-b-2 border-orange-500 pb-2 font-serif text-xl font-semibold text-foreground">
               Contact Details
             </h3>
-            <p className="mb-4 text-sm font-medium text-foreground">
+            <p className="mb-4 text-sm font-medium text-foreground hidden sm:block">
               <Logo variant="full" asLink={false} />
             </p>
             <ul className="space-y-3 text-sm text-muted-foreground">
