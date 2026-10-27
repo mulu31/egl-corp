@@ -1,15 +1,16 @@
-import { Routes, Route } from "react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
-import { ServicesPage } from "@/pages/ServicesPage";
+import { BlogDetailPage } from "@/pages/BlogDetailPage";
+import { BlogsPage } from "@/pages/BlogsPage"; // NEW
 import { ContactPage } from "@/pages/ContactPage";
+import { HomePage } from "@/pages/HomePage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
-import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { ProjectDetailPage } from "@/pages/ProjectDetailPage";
-import { BlogDetailPage } from "@/pages/BlogDetailPage";
-import { NotFoundPage } from "@/pages/NotFoundPage";
+import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
+import { ServicesPage } from "@/pages/ServicesPage";
+import { Route, Routes } from "react-router";
 
 export function App() {
   return (
@@ -46,22 +47,11 @@ export function App() {
         />
         <Route path="projects/:slug" element={<ProjectDetailPage />} />
 
-        <Route
-          path="blogs"
-          element={
-            <PlaceholderPage
-              title="Blogs & Events"
-              description="Articles and event updates from EGL Corp will be published here."
-              path="/blogs"
-              eyebrow="Insights"
-            />
-          }
-        />
+        {/* Updated Blogs Routes */}
+        <Route path="blogs" element={<BlogsPage />} />
         <Route path="blogs/:slug" element={<BlogDetailPage />} />
 
         <Route path="about" element={<AboutPage />} />
-
-        {/* Updated Contact Route */}
         <Route path="contact" element={<ContactPage />} />
 
         <Route
