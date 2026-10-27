@@ -4,13 +4,12 @@ export function getEventStatus(post: BlogPost): EventStatus | null {
   if (post.type !== "event") return null;
 
   // Explicit status overrides date logic
-  if (post.explicitStatus) return post.explicitStatus;
-
-  if (!post.eventStartAt) return "past"; // Fallback for invalid data
+  if (post.eventData?.status) return post.eventData.status;
+  if (!post.eventData?.startAt) return "past"; // Fallback for invalid data
 
   const now = new Date().getTime();
-  const start = new Date(post.eventStartAt).getTime();
-  const end = post.eventEndAt ? new Date(post.eventEndAt).getTime() : start;
+  const start = new Date(post.eventData?.startAt).getTime();
+  const end = post.eventData?.endAt ? new Date(post.eventData?.endAt).getTime() : start;
 
   if (now > end) return "past";
   // If we want to support "live" events in the future:

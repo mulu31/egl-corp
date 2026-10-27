@@ -1,7 +1,7 @@
-import { Link } from "react-router";
-import { FiArrowRight } from "react-icons/fi";
-import { BLOG_POSTS as BLOGS } from "@/data/blogs";
 import { PageContainer } from "@/components/PageContainer";
+import { BLOG_POSTS as BLOGS } from "@/data/blogs";
+import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router";
 
 export function BlogHighlights() {
   return (
@@ -48,7 +48,7 @@ export function BlogHighlights() {
                   {blog.content.slice(0, 100)}...
                 </p>
                 <p className="text-xs text-muted-foreground mb-4 font-medium">
-                  {blog.location}
+                  {blog.eventData?.location}
                 </p>
                 <div className="mt-auto pt-4 border-t border-border text-sm font-medium text-foreground flex items-center group-hover:text-orange-500 transition-colors">
                   View Details <FiArrowRight className="ml-2" />
