@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { BlogPost } from "@/data/blogData";
+import type { BlogPost } from "@/data/blogs";
 import { formatDate } from "@/utils/dateUtils";
 import { FiClock, FiUser, FiArrowLeft } from "react-icons/fi";
 import { BlogCard } from "./BlogCard";

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FiArrowRight } from "react-icons/fi";
-import { PROJECTS } from "@/data/homeData";
+import { PROJECTS } from "@/data/projects"; // FIXED IMPORT
 import { PageContainer } from "@/components/PageContainer";
 
 export function FeaturedProjects() {
@@ -50,7 +50,7 @@ export function FeaturedProjects() {
                   {project.title}
                 </h3>
                 <p className="text-sm text-slate-400 flex-1 mb-6">
-                  {project.desc}
+                  {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((t) => (

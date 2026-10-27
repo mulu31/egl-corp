@@ -1,5 +1,28 @@
-import { ABOUT_VALUES } from "../../data/homeData";
-import { PageContainer } from "../PageContainer";
+import { PageContainer } from "@/components/PageContainer";
+import { FiCheckCircle, FiShield, FiUsers, FiZap } from "react-icons/fi";
+
+const ABOUT_VALUES = [
+  {
+    icon: FiCheckCircle,
+    title: "Excellence",
+    desc: "Striving for the highest standards in every line of code.",
+  },
+  {
+    icon: FiShield,
+    title: "Integrity",
+    desc: "Building trust through honest communication and ethical engineering.",
+  },
+  {
+    icon: FiZap,
+    title: "Innovation",
+    desc: "Embracing modern architectures and creative problem solving.",
+  },
+  {
+    icon: FiUsers,
+    title: "Partnership",
+    desc: "Fostering collaborative relationships with our clients.",
+  },
+];
 
 export function AboutSection() {
   return (

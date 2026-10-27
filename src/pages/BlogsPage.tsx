@@ -1,7 +1,7 @@
 import { BlogCard } from "@/components/blogs/BlogCard";
 import { PageContainer } from "@/components/PageContainer";
 import { Seo } from "@/components/Seo";
-import { BLOG_POSTS } from "@/data/blogData";
+import { BLOG_POSTS } from "@/data/blogs";
 import { useEffect, useMemo, useState } from "react";
 import { FiFilter, FiGrid, FiList, FiSearch } from "react-icons/fi";
 

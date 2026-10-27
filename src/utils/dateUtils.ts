@@ -1,4 +1,4 @@
-import type { BlogPost, EventStatus } from "@/data/blogData";
+import type { BlogPost, EventStatus } from "@/data/blogs";
 
 export function getEventStatus(post: BlogPost): EventStatus | null {
   if (post.type !== "event") return null;

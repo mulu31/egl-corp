@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/data/blogData";
+import type { BlogPost } from "@/data/blogs";
 import { formatDate } from "@/utils/dateUtils";
 import { useState } from "react";
 import {

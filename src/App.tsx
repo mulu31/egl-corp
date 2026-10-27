@@ -1,13 +1,14 @@
 import { SiteLayout } from "@/components/SiteLayout";
 import { AboutPage } from "@/pages/AboutPage";
 import { BlogDetailPage } from "@/pages/BlogDetailPage";
-import { BlogsPage } from "@/pages/BlogsPage"; // NEW
+import { BlogsPage } from "@/pages/BlogsPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { HomePage } from "@/pages/HomePage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { ProjectDetailPage } from "@/pages/ProjectDetailPage";
+import { ProjectsPage } from "@/pages/ProjectsPage"; // NEW
 import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
 import { ServicesPage } from "@/pages/ServicesPage";
 import { Route, Routes } from "react-router";
@@ -34,20 +35,10 @@ export function App() {
         />
         <Route path="products/:slug" element={<ProductDetailPage />} />
 
-        <Route
-          path="projects"
-          element={
-            <PlaceholderPage
-              title="Projects"
-              description="Selected software engineering work."
-              path="/projects"
-              eyebrow="Our work"
-            />
-          }
-        />
+        {/* Replaced Projects Placeholder with real page */}
+        <Route path="projects" element={<ProjectsPage />} />
         <Route path="projects/:slug" element={<ProjectDetailPage />} />
 
-        {/* Updated Blogs Routes */}
         <Route path="blogs" element={<BlogsPage />} />
         <Route path="blogs/:slug" element={<BlogDetailPage />} />
 

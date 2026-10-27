@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FiArrowRight } from "react-icons/fi";
-import { BLOGS } from "@/data/homeData";
+import { BLOG_POSTS as BLOGS } from "@/data/blogs";
 import { PageContainer } from "@/components/PageContainer";
 
 export function BlogHighlights() {
@@ -28,14 +28,14 @@ export function BlogHighlights() {
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img
-                  src={blog.image}
+                  src={blog.coverImage}
                   alt={blog.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-                  <span>{blog.date}</span>
+                  <span>{blog.publishedAt}</span>
                   <span className="h-1 w-1 rounded-full bg-border" />
                   <span className="border border-border px-2 py-0.5 rounded text-[10px] uppercase font-semibold">
                     {blog.category}
@@ -45,10 +45,10 @@ export function BlogHighlights() {
                   {blog.title}
                 </h3>
                 <p className="text-sm text-muted-foreground flex-1 mb-4">
-                  {blog.desc}
+                  {blog.content.slice(0, 100)}...
                 </p>
                 <p className="text-xs text-muted-foreground mb-4 font-medium">
-                  {blog.venue}
+                  {blog.location}
                 </p>
                 <div className="mt-auto pt-4 border-t border-border text-sm font-medium text-foreground flex items-center group-hover:text-orange-500 transition-colors">
                   View Details <FiArrowRight className="ml-2" />

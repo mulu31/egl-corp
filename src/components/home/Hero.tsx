@@ -16,7 +16,7 @@ function useResponsiveVideoSource() {
       setSource(selected || null);
     };
     checkSource();
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(checkSource, 250);

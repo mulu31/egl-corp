@@ -1,8 +1,8 @@
+import { PageContainer } from "@/components/PageContainer";
+import { TESTIMONIALS } from "@/data/testimonials"; // FIXED IMPORT
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { TESTIMONIALS } from "@/data/homeData";
-import { PageContainer } from "@/components/PageContainer";
 
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -16,9 +16,7 @@ export function Testimonials() {
     <section className="py-24 bg-muted/30">
       <PageContainer>
         <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl bg-background shadow-xl flex flex-col md:flex-row min-h-[500px]">
-          {/* Left Panel - Navy Background with Quote */}
           <div className="relative w-full md:w-[40%] bg-[#0a192f] p-10 md:p-16 flex flex-col justify-center overflow-hidden">
-            {/* Decorative Quote Icon */}
             <div className="absolute top-10 left-10 opacity-20">
               <svg
                 width="120"
@@ -34,7 +32,6 @@ export function Testimonials() {
               </svg>
             </div>
 
-            {/* Dotted Pattern Overlay */}
             <div
               className="absolute bottom-10 left-10 opacity-10 pointer-events-none"
               style={{
@@ -55,9 +52,7 @@ export function Testimonials() {
             </div>
           </div>
 
-          {/* Right Panel - Testimonial Content */}
           <div className="w-full md:w-[60%] p-10 md:p-16 flex flex-col items-center justify-center text-center bg-background relative">
-            {/* Quote Content */}
             <div className="max-w-lg mx-auto">
               <h3 className="text-xl font-medium text-foreground mb-4">
                 {activeTestimonial.role}, {activeTestimonial.company}
@@ -74,7 +69,6 @@ export function Testimonials() {
               </p>
             </div>
 
-            {/* Avatar Carousel */}
             <div className="relative mt-auto w-full flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
               <button
                 onClick={prev}
@@ -86,11 +80,7 @@ export function Testimonials() {
 
               <div className="flex items-center justify-center gap-3 sm:gap-5">
                 {TESTIMONIALS.map((t, i) => {
-                  // Create a perspective effect: previous, active, next
                   const isActive = i === activeIndex;
-
-                  // Only show up to 5 avatars near the active index to prevent overflow on mobile
-                  // A simple approach: show all on desktop, but hide far ones on mobile.
                   return (
                     <button
                       key={t.id}
@@ -121,13 +111,12 @@ export function Testimonials() {
               </button>
             </div>
 
-            {/* Author Info */}
             <div className="mt-6 text-center">
               <p className="font-serif font-bold text-foreground">
                 {activeTestimonial.name}
               </p>
               <p className="text-xs text-muted-foreground mt-1">
-                {activeTestimonial.role} @ {activeTestimonial.company}
+                {activeTestimonial.role} at {activeTestimonial.company}
               </p>
             </div>
           </div>

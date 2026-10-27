@@ -12,12 +12,30 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 
 export function HomePage() {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "EGL Corp",
+    url: "https://REPLACE-BEFORE-LAUNCH.example",
+    logo: "https://REPLACE-BEFORE-LAUNCH.example/logo.png",
+    description:
+      "EGL Corp engineers digital solutions and software products that help businesses solve problems, work smarter, and grow.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+251-911-391-625",
+      contactType: "customer service",
+      areaServed: "ET",
+      availableLanguage: ["English", "Amharic"],
+    },
+  };
+
   return (
     <>
       <Seo
         title="Software Built for What's Next"
         description="EGL Corp engineers digital solutions and software products that help businesses solve problems, work smarter, and grow."
         path="/"
+        jsonLd={orgSchema}
       />
       <Hero />
       <AboutSection />

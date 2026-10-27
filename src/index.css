@@ -179,3 +179,39 @@ h4 {
 .animate-spin-slow-reverse {
   animation: spin-slow-reverse 35s linear infinite;
 }
+
+@layer utilities {
+  /* Existing spin utilities */
+  .animate-spin-slow {
+    animation: spin 40s linear infinite;
+  }
+  .animate-spin-slow-reverse {
+    animation: spin-reverse 30s linear infinite;
+  }
+
+  /* New faster inner orbit */
+  .animate-spin-fast {
+    animation: spin 20s linear infinite;
+  }
+  .animate-spin-fast-reverse {
+    animation: spin-reverse 25s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

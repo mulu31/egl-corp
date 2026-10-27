@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router";
-import { FiChevronRight } from "react-icons/fi";
-import { SERVICES } from "@/data/homeData";
 import { PageContainer } from "@/components/PageContainer";
+import { SERVICES } from "@/data/services"; // FIXED IMPORT
+import { useEffect, useState } from "react";
+import { FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router";
 
 export function ServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -20,11 +20,10 @@ export function ServicesShowcase() {
     <section className="bg-background py-24 overflow-hidden">
       <PageContainer>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
-          {/* Left: Image (Desktop/Tablet) - Sharp Corners */}
           <div className="relative aspect-[4/3] w-full overflow-hidden hidden lg:block order-1">
             {SERVICES.map((s, i) => (
               <img
-                key={s.slug}
+                key={s.slug} // FIXED SLUG USAGE
                 src={s.image}
                 alt={s.title}
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
@@ -34,7 +33,6 @@ export function ServicesShowcase() {
             ))}
           </div>
 
-          {/* Right: Content & Navigation */}
           <div className="flex flex-col order-2 lg:order-2">
             <p className="text-sm font-medium uppercase tracking-wider text-orange-500 mb-4">
               Services
@@ -48,13 +46,12 @@ export function ServicesShowcase() {
               business growth, efficiency, and a lifelong love for technology.
             </p>
 
-            {/* List / Accordion */}
             <div className="space-y-2">
               {SERVICES.map((service, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <div
-                    key={service.slug}
+                    key={service.slug} // FIXED SLUG USAGE
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     className={`relative border-l-2 transition-all duration-300 ${
@@ -79,11 +76,10 @@ export function ServicesShowcase() {
                       </span>
                     </button>
 
-                    {/* Expanded Content */}
                     {isActive && (
                       <div className="px-6 pb-6 pl-[4.5rem]">
                         <p className="text-sm text-muted-foreground mb-4">
-                          {service.desc}
+                          {service.summary}
                         </p>
                         <Link
                           to={`/services/${service.slug}`}
@@ -98,7 +94,6 @@ export function ServicesShowcase() {
               })}
             </div>
 
-            {/* Progress / Next button */}
             <div className="mt-8 flex items-center justify-between px-2">
               <div className="flex items-center">
                 {SERVICES.map((_, i) => (
@@ -129,11 +124,10 @@ export function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Mobile Image (Sharp Corners) */}
           <div className="relative aspect-[4/3] w-full overflow-hidden block lg:hidden order-3 mt-4">
             {SERVICES.map((s, i) => (
               <img
-                key={s.slug}
+                key={s.slug} // FIXED SLUG USAGE
                 src={s.image}
                 alt={s.title}
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${

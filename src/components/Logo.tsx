@@ -1,5 +1,5 @@
+import { SITE } from "@/config/site";
 import { Link } from "react-router";
-import { SITE } from "../config/site";
 
 export interface LogoProps {
   variant?: "full" | "compact" | "icon";
@@ -14,14 +14,12 @@ export function Logo({
   className = "",
   asLink = true,
 }: LogoProps) {
-  // "auto" relies on Tailwind's dark: modifiers. Explicit "light"/"dark" forces a color.
   const textColor =
     theme === "light"
       ? "text-slate-900"
       : theme === "dark"
         ? "text-white"
         : "text-slate-900 dark:text-white";
-
   const subTextColor =
     theme === "light"
       ? "text-slate-600"
@@ -30,9 +28,11 @@ export function Logo({
         : "text-slate-600 dark:text-slate-300";
 
   const content = (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {/* Icon / Mark */}
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground font-serif text-xl font-bold">
+    <div className={`flex items-center justify-center gap-3 ${className}`}>
+      {/* Icon / Mark - Scaled up if variant is icon */}
+      <div
+        className={`flex shrink-0 items-center justify-center rounded bg-primary text-primary-foreground font-serif font-bold ${variant === "icon" ? "h-16 w-16 text-4xl" : "h-10 w-10 text-xl"}`}
+      >
         E
       </div>
 

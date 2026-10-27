@@ -1,12 +1,7 @@
+import { PageContainer } from "@/components/PageContainer";
+import { DEFAULT_FAQS, type FaqItem } from "@/data/faqs"; // FIXED IMPORT
 import { useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { FAQS as DEFAULT_FAQS } from "@/data/homeData";
-import { PageContainer } from "@/components/PageContainer";
-
-export interface FaqItem {
-  q: string;
-  a: string;
-}
 
 export interface FaqSectionProps {
   faqs?: readonly FaqItem[];

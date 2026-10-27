@@ -1,23 +1,22 @@
-import { useParams, Link } from "react-router";
-import { Seo } from "@/components/Seo";
-import { PageContainer } from "@/components/PageContainer";
-import { getPostBySlug, getRelatedPosts } from "@/data/blogData";
-import { formatDate } from "@/utils/dateUtils";
 import { ArticleDetail } from "@/components/blogs/ArticleDetail";
 import { EventDetail } from "@/components/blogs/EventDetail";
+import { PageContainer } from "@/components/PageContainer";
+import { Seo } from "@/components/Seo";
+import { getPostBySlug, getRelatedPosts } from "@/data/blogs"; // UPDATED PATH
+import { formatDate } from "@/utils/dateUtils";
 import {
-  FiChevronRight,
   FiCalendar,
+  FiChevronRight,
+  FiClock,
   FiMapPin,
   FiUser,
-  FiClock,
 } from "react-icons/fi";
+import { Link, useParams } from "react-router";
 
 export function BlogDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
-  // 404 Fallback State
   if (!post) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-background">
@@ -39,8 +38,42 @@ export function BlogDetailPage() {
   }
 
   const isEvent = post.type === "event";
+  // ADDED DEFINITION FOR isUpcoming
   const isUpcoming = isEvent && post.eventData?.status === "upcoming";
+
   const relatedContent = getRelatedPosts(post.slug, post.category);
+
+  // JSON-LD Schema Generation
+  const jsonLd = isEvent
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        name: post.title,
+        startDate: post.eventData?.startAt,
+        endDate: post.eventData?.endAt,
+        eventStatus: isUpcoming
+          ? "https://schema.org/EventScheduled"
+          : "https://schema.org/EventPast",
+        location: {
+          "@type": "Place",
+          name: post.eventData?.details.venue.name,
+          address: post.eventData?.details.venue.address,
+        },
+        image: post.coverImage,
+        description: post.summary,
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        image: post.coverImage,
+        datePublished: post.publishedAt,
+        author: {
+          "@type": "Person",
+          name: post.articleData?.authorProfile.name,
+        },
+        description: post.summary,
+      };
 
   return (
     <div className="bg-background min-h-screen">
@@ -48,6 +81,9 @@ export function BlogDetailPage() {
         title={post.title}
         description={post.summary}
         path={`/blogs/${post.slug}`}
+        type={isEvent ? "event" : "article"}
+        image={post.coverImage}
+        jsonLd={jsonLd}
       />
 
       {/* Breadcrumbs */}

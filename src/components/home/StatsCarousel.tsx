@@ -1,15 +1,12 @@
+import { PageContainer } from "@/components/PageContainer";
+import { STATS } from "@/data/stats"; // FIXED IMPORT
 import { useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { STATS } from "../../data/homeData";
-import { PageContainer } from "../PageContainer";
 
 export function StatsCarousel() {
   const [startIndex, setStartIndex] = useState(0);
 
-  // Responsive visible count: Mobile (2), Tablet (3), Desktop (5)
-  // For simplicity in React without complex window resize listeners,
-  // we'll use a CSS grid that handles wrapping, and paginate by 2.
-  // A true production app might use an intersection observer or matchMedia.
+  // Responsive visible count handled via CSS, pagination logic remains simple
   const itemsPerPage = 2;
   const maxIndex = Math.max(0, STATS.length - itemsPerPage);
 
@@ -76,14 +73,14 @@ export function StatsCarousel() {
             <button
               onClick={prev}
               disabled={startIndex === 0}
-              className="p-2 rounded-full border border-slate-700 disabled:opacity-30"
+              className="focus-ring-orange p-2 rounded-full border border-slate-700 disabled:opacity-30"
             >
               <FiChevronLeft size={20} />
             </button>
             <button
               onClick={next}
               disabled={startIndex >= maxIndex}
-              className="p-2 rounded-full border border-slate-700 disabled:opacity-30"
+              className="focus-ring-orange p-2 rounded-full border border-slate-700 disabled:opacity-30"
             >
               <FiChevronRight size={20} />
             </button>

@@ -11,7 +11,7 @@ import {
   JOURNEY_ITEMS,
   PROCESS_STEPS,
   TEAM_MEMBERS,
-} from "@/data/aboutData";
+} from "@/data/about"; // FIXED IMPORT
 import { useEffect, useState } from "react";
 import { FaRedditAlien, FaXTwitter } from "react-icons/fa6";
 import {
@@ -49,14 +49,12 @@ export function AboutPage() {
         path="/about"
       />
 
-      {/* 1. Hero Section */}
+      {/* ... HERO SECTION ... */}
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-slate-900 text-center">
         {HERO_SLIDES.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
           >
             <img
               src={slide}
@@ -90,7 +88,7 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 2. Background & Philosophy */}
+      {/* ... PHILOSOPHY ... */}
       <section className="py-24 lg:py-32 overflow-hidden">
         <PageContainer>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -116,7 +114,7 @@ export function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/5] hidden sm:block w-full max-w-md mx-auto lg:ml-auto overflow-hidden rounded-lg">
+              <div className="aspect-[4/5] w-full max-w-md mx-auto lg:ml-auto overflow-hidden rounded-lg">
                 <img
                   src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
                   alt="EGL Corp Team"
@@ -137,7 +135,7 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 3. Services (Zigzag) */}
+      {/* ... SERVICES ... */}
       <section className="py-24 bg-muted/30">
         <PageContainer>
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -187,7 +185,7 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 4. Mission, Vision & Core Values (Timeline) */}
+      {/* ... MISSION & CORE VALUES ... */}
       <section className="py-24 bg-[#0f172a] text-white">
         <PageContainer>
           <div className="text-center mb-16">
@@ -195,7 +193,6 @@ export function AboutPage() {
               Our Mission & Vision
             </h2>
           </div>
-
           <div className="relative max-w-4xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 mb-24">
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-700 hidden md:block" />
             <div className="md:w-1/2 md:text-right md:pr-12">
@@ -221,16 +218,12 @@ export function AboutPage() {
               </p>
             </div>
           </div>
-
-          {/* Core Values Timeline */}
           <div className="max-w-3xl mx-auto mt-16">
             <h3 className="text-center text-2xl font-serif font-semibold mb-12">
               Our Core Values
             </h3>
             <div className="relative border-l border-slate-700 ml-4 md:ml-0 md:border-l-0">
-              {/* Desktop central line */}
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-700 hidden md:block" />
-
               {CORE_VALUES.map((val, i) => {
                 const isEven = i % 2 === 0;
                 return (
@@ -238,10 +231,7 @@ export function AboutPage() {
                     key={i}
                     className={`relative mb-10 md:flex md:items-center md:justify-between ${isEven ? "md:flex-row-reverse" : ""}`}
                   >
-                    {/* Dot */}
                     <div className="absolute left-[-5px] top-2 md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 h-3 w-3 rounded-full bg-teal-400 ring-4 ring-slate-900 z-10" />
-
-                    {/* Content */}
                     <div
                       className={`ml-6 md:ml-0 md:w-[45%] ${isEven ? "md:text-left" : "md:text-right"}`}
                     >
@@ -267,10 +257,10 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 5. Statistics (Reused) */}
+      {/* ... STATS ... */}
       <StatsCarousel />
 
-      {/* 6. Team Section */}
+      {/* ... TEAM ... */}
       <section className="py-24 bg-background">
         <PageContainer>
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -303,8 +293,6 @@ export function AboutPage() {
                 <p className="text-sm text-muted-foreground mb-6 flex-1">
                   {member.bio}
                 </p>
-
-                {/* Circled Social Icons */}
                 <div className="flex gap-3">
                   <a
                     href={member.socials.linkedin}
@@ -334,7 +322,7 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 7. Process Section (Wavy Line & Alternating Layout) */}
+      {/* ... PROCESS ... */}
       <section className="py-24 bg-muted/30 overflow-hidden">
         <PageContainer>
           <div className="text-center max-w-2xl mx-auto mb-20">
@@ -349,9 +337,7 @@ export function AboutPage() {
               when you contact us.
             </p>
           </div>
-
           <div className="relative max-w-5xl mx-auto">
-            {/* SVG Curve for Desktop (Replicating the screenshot) */}
             <div className="absolute inset-0 hidden lg:block pointer-events-none -mt-12">
               <svg viewBox="0 0 1000 300" fill="none" className="w-full h-full">
                 <path
@@ -362,30 +348,22 @@ export function AboutPage() {
                 />
               </svg>
             </div>
-
-            {/* Steps Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 relative z-10">
               {PROCESS_STEPS.map((step, index) => {
                 const Icon =
                   PROCESS_ICONS[step.icon as keyof typeof PROCESS_ICONS];
-                // Alternating margin to align with the wavy line
                 const yOffset = index === 1 ? "lg:mt-24" : "lg:mt-0";
-
                 return (
                   <div
                     key={index}
                     className={`relative flex flex-col items-center text-center ${yOffset}`}
                   >
-                    {/* Huge Background Number */}
                     <span className="absolute -top-8 text-8xl font-serif font-bold text-muted/50 select-none -z-10">
                       {index + 1}
                     </span>
-
-                    {/* Floating Icon Box */}
                     <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-background shadow-xl border border-border text-orange-500 mb-8 z-10">
                       <Icon size={32} />
                     </div>
-
                     <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
                       {step.title}
                     </h3>
@@ -400,11 +378,11 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 8. Reused Sections */}
+      {/* ... REUSED ... */}
       <FeaturedProjects />
       <Testimonials />
 
-      {/* 9. Follow Our Journey (Video Backgrounds) */}
+      {/* ... JOURNEY ... */}
       <section className="py-24 bg-slate-950 text-white">
         <PageContainer>
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -418,7 +396,6 @@ export function AboutPage() {
               Discover events, community activities and local stories.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {JOURNEY_ITEMS.map((item) => (
               <a
@@ -428,7 +405,6 @@ export function AboutPage() {
                 rel="noopener noreferrer"
                 className="group relative aspect-[9/16] w-full max-w-sm mx-auto overflow-hidden rounded-xl bg-slate-900 border border-slate-800 focus-ring-orange block"
               >
-                {/* Background Video */}
                 <video
                   autoPlay
                   loop
@@ -439,8 +415,6 @@ export function AboutPage() {
                 >
                   <source src={item.video} type="video/mp4" />
                 </video>
-
-                {/* Overlay - Always visible on mobile, hover on desktop */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
                   <div
                     className={`transition-all duration-300 lg:opacity-0 lg:translate-y-4 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 lg:group-focus:opacity-100 lg:group-focus:translate-y-0`}
@@ -468,7 +442,6 @@ export function AboutPage() {
         </PageContainer>
       </section>
 
-      {/* 10. Final CTA (Reused) */}
       <FinalCta />
     </div>
   );

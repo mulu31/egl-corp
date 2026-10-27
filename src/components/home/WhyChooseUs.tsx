@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router";
-import { FiChevronLeft, FiChevronRight, FiArrowRight } from "react-icons/fi";
-import { WHY_US } from "@/data/homeData";
 import { PageContainer } from "@/components/PageContainer";
+import { WHY_US } from "@/data/about"; // FIXED IMPORT
+import { useState } from "react";
+import { FiArrowRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router";
 
 export function WhyChooseUs() {
   const [active, setActive] = useState(0);
@@ -25,7 +25,6 @@ export function WhyChooseUs() {
 
         {/* Desktop Layout (Overlapping Card) */}
         <div className="relative hidden md:block aspect-[21/9] w-full max-w-6xl mx-auto">
-          {/* Background Image Layer */}
           <div className="absolute inset-y-0 right-0 w-[80%] overflow-hidden">
             {WHY_US.map((w, i) => (
               <img
@@ -39,7 +38,6 @@ export function WhyChooseUs() {
             ))}
           </div>
 
-          {/* Overlapping Card Layer */}
           <div className="absolute inset-y-0 left-0 w-full max-w-md flex items-center z-10">
             <div className="bg-[#1e293b] p-10 shadow-2xl w-full border border-slate-700/50">
               <div className="flex items-center gap-3 mb-4">

@@ -78,7 +78,6 @@ export const TEAM_MEMBERS = [
   },
 ];
 
-// Structured for the wavy line layout
 export const PROCESS_STEPS = [
   {
     title: "Free Home Visit",
@@ -104,7 +103,6 @@ export const JOURNEY_ITEMS = [
     followers: "12K+",
     text: "Follow our TikTok page",
     desc: "Behind-the-scenes of our engineering team.",
-    // Using a video element for the background
     video:
       "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-42807-large.mp4",
     poster:
@@ -138,5 +136,32 @@ export const JOURNEY_ITEMS = [
     link: "#",
     color:
       "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 text-white",
+  },
+];
+
+export const WHY_US = [
+  {
+    title: "Strategic Architecture",
+    desc: "We align technical decisions with your business goals, ensuring scalable and maintainable systems.",
+    image:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Clear Communication",
+    desc: "Regular updates, direct collaboration, and no vague promises. You are part of the process.",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Quality Assurance",
+    desc: "Testing and stability are integrated into our process, not bolted on at the end.",
+    image:
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Ongoing Support",
+    desc: "We remain available to iterate, maintain, and scale the systems we build.",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
   },
 ];

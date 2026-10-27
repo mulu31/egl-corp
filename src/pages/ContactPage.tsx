@@ -3,7 +3,7 @@ import { SectionSeparator } from "@/components/SectionSeparator";
 import { Seo } from "@/components/Seo";
 import { FinalCta } from "@/components/home/FinalCta";
 import { CONTACT_INFO, OFFICE_GALLERY } from "@/data/contactData";
-import { SERVICES_DETAILED } from "@/data/servicesData";
+import { SERVICES as SERVICES_DETAILED } from "@/data/services";
 import { useState } from "react";
 import { FiMail, FiMapPin, FiPhone, FiSend } from "react-icons/fi";
 

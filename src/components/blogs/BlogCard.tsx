@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FiCalendar, FiMapPin } from "react-icons/fi";
-import type { BlogPost } from "@/data/blogData";
+import type { BlogPost } from "@/data/blogs";
 import { formatDate } from "@/utils/dateUtils";
 
 export interface BlogCardProps {
