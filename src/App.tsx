@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ServicesPage } from "@/pages/ServicesPage";
+import { ContactPage } from "@/pages/ContactPage";
 import { PlaceholderPage } from "@/pages/PlaceholderPage";
 import { ServiceDetailPage } from "@/pages/ServiceDetailPage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
@@ -16,9 +17,7 @@ export function App() {
       <Route element={<SiteLayout />}>
         <Route index element={<HomePage />} />
 
-        {/* Updated Services Route */}
         <Route path="services" element={<ServicesPage />} />
-
         <Route path="services/:slug" element={<ServiceDetailPage />} />
 
         <Route
@@ -62,17 +61,8 @@ export function App() {
 
         <Route path="about" element={<AboutPage />} />
 
-        <Route
-          path="contact"
-          element={
-            <PlaceholderPage
-              title="Contact"
-              description="Get in touch with EGL Corp about your next project."
-              path="/contact"
-              eyebrow="Start a conversation"
-            />
-          }
-        />
+        {/* Updated Contact Route */}
+        <Route path="contact" element={<ContactPage />} />
 
         <Route
           path="privacy"
